@@ -62,10 +62,12 @@ public class blockPlacing : MonoBehaviour {
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, range, layerMask)) {
-          Destroy(hit.collider.gameObject);
+          if(hit.collider.gameObject.tag == "Block") {
+            Destroy(hit.collider.gameObject);
 
-          if(!unlimitedBlocks) {
-            blocksLeft++;
+            if(!unlimitedBlocks) {
+              blocksLeft++;
+            }
           }
         }
       }
